@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<title>お問い合わせ後の詳細画面</title>
+</head>
+<body>
+	<h1>お問い合わせ詳細情報</h1>
+	
+	    <table border="1">
+			<thead>
+			            <tr>
+			                <th>お問い合わせID</th>
+			                <th>姓</th>
+			                <th>名</th>
+							<th>メールアドレス</th>
+							<th>電話番号</th>
+							<th>郵便番号</th>
+							<th>住所</th>
+							<th>建物名</th>
+			                <th>お問い合わせ種別</th>
+							<th>お問い合わせ内容</th>
+			                <th>作成日時</th>
+			                <th>更新日時</th>
+			            </tr>
+			        </thead>
+			        <tbody>
+			            <tr th:each="contact : ${contacts}">
+			                <td th:text="${contacts.id}"></td>
+			                <td th:text="${contacts.lastName}"></td>
+			                <td th:text="${contacts.firstName}"></td>
+							<td th:text="${contact.email}"></td>
+							<td th:text="${contacts.phone}"></td>
+							<td th:text="${contacts.zipCode}"></td>
+							<td th:text="${contacts.address}"></td>
+							<td th:text="${contacts.buildingName}"></td>
+			                <td th:text="${contacts.contactType}"></td>
+							<th th:text="${contacts.body}"></th>
+			                <td th:text="${contacts.created_at}"></td>
+			                <td th:text="${contacts.updated_at}"></td>
+			            </tr>
+			        </tbody>
+	    </table>
+
+    <form th:action="@{/admin/logout}" method="post">
+        <input type="submit" value="戻る"/>
+    </form>
+</body>
+</html>

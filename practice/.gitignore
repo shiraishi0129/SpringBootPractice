@@ -31,3 +31,4 @@ build/
 
 ### VS Code ###
 .vscode/
+/myapp.log.2024-07-25.0573163545585000.tmp

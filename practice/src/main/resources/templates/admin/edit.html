@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<title>編集画面</title>
+</head>
+<body>
+	<h1>編集画面</h1>
+	<form 	th:action="@{/admin/edit/{id}/complete(id=${contactForm.id})}" th:object="${contactForm}"method="post">
+		<table border="1">
+				<thead>
+				            <tr>
+				                <th>お問い合わせID</th>
+				                <th>姓</th>
+				                <th>名</th>
+								<th>メールアドレス</th>
+								<th>電話番号</th>
+								<th>郵便番号</th>
+								<th>住所</th>
+								<th>建物名</th>
+				                <th>お問い合わせ種別</th>
+								<th>お問い合わせ内容</th>
+				            </tr>
+				        </thead>
+				        <tbody>
+							<tr>
+								<th>
+									<span th:text="${contactForm.id}"></span>
+									<input type="hidden" th:field="*{id}">
+								</th>
+								<th>
+									<input type="text" 	th:field="*{lastName}">
+								</th>
+								<th>
+									<input type="text" th:field="*{firstName}">
+								</th>
+								<th>
+									<input type="email" th:field="*{email}" >
+								</th>
+								<th>
+									<input type="number" th:field="*{phone}">
+								</th>
+								<th>
+									<input type="text" th:field="*{zipCode}">
+								</th>															
+								<th>
+									<input type="text" th:field="*{address}" >
+								</th>
+								<th>
+									<input type="text" th:field="*{buildingName}" >
+								</th>
+								<th>
+									<select name="contactType">
+										<option value="services">サービスに関するお問い合わせ</option>
+										<option value="technicalQuestions">技術的なお問い合わせ</option>
+										<option value="others">その他</option>
+							        </select>
+								</th>
+								<th>
+									<input type="text" th:field="*{body}">
+								</th>
+							</tr>
+					            
+							
+				        </tbody>
+		    </table>
+			<input type="submit" value="上書き保存">
+		
+	</form>
+    
+	<form th:action="@{/admin/{id}/delete(id=${contactForm.id})}"th:object="${contactForm}" method="post">
+	        <input type="submit" value="お問い合わせを削除"/>
+	    </form>
+	
+	<form th:action="@{/admin/logout}" method="post">
+        <input type="submit" value="戻る"/>
+    </form>
+</body>
+</html>
