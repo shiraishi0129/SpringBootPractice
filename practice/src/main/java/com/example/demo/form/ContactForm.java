@@ -13,6 +13,10 @@ import lombok.Data;
 @Data
 public class ContactForm implements Serializable{
 	
+
+	//最終課題で追加された、IDの項目
+	private Long id;
+	
 	@NotBlank
 	private String lastName;
 
@@ -46,7 +50,4 @@ public class ContactForm implements Serializable{
 	private Timestamp created_at;
 	
 	private Timestamp updated_at;
-
-	//最終課題で追加された、IDの項目
-	private Long id;
 }
