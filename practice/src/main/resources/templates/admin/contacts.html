@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<title>お問い合わせ後の一覧画面</title>
+</head>
+<body>
+    <h1>お問い合わせ後の一覧画面</h1>
+	
+	<form th:action="@{/admin/contacts/:id}" method="get">
+	      <label>IDを入力して詳細を表示：</label>
+	      <input type="text" name="id"/>
+	      <button type="submit">詳細を表示</button>
+	  </form>
+	  
+	
+    <table border="1">
+        <thead>
+            <tr>
+                <th>お問い合わせID</th>
+                <th>姓</th>
+                <th>名</th>
+                <th>お問い合わせ種別</th>
+                <th>作成日時</th>
+                <th>更新日時</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr th:each="contact : ${contacts}">
+                <td th:text="${contact.id}"></td>
+                <td th:text="${contact.lastName}"></td>
+                <td th:text="${contact.firstName}"></td>
+                <td th:text="${contact.contactType}"></td>
+                <td th:text="${contact.created_at}"></td>
+                <td th:text="${contact.updated_at}"></td>
+            </tr>
+        </tbody>
+    </table>
+	
+	<form 	th:action="@{/admin/contacts/:id/edit(id=${id})}" method="get">
+			<label>:IDを入力して編集・削除画面へ</label>
+			      <input type="text" id="id" name="id"/>
+		       <button type="submit">編集ボタン</button>
+	</form>
+	
+    <form th:action="@{/admin/logout}" method="post">
+        <input type="submit" value="ログアウト"/>
+    </form>
+</body>
+</html>
